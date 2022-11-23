@@ -1,7 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Scoreboard from "./pages/Scoreboard";
+import Game from "./pages/Game";
+
 function App() {
   return (
-    <div className="App">
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Game />}></Route>
+        <Route path="/scoreboard" element={<Scoreboard />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
