@@ -12,7 +12,7 @@ export default function StartGame({closeModal}) {
         <div className="preview">
         </div>
         <div className="game-info">
-          <h3>Find those Pokemon:</h3>
+          <h3>Find these Pokemon:</h3>
           <div className="pokemon-to-find">
             <img src={articunoImg} style={{height: "150px", width: "150px"}}></img>
             <span className="pokemon-name">Articuno</span>
