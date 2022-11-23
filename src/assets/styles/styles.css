@@ -105,3 +105,21 @@ button:active{
 .gameboard:hover{
   cursor: crosshair;
 }
+
+.correct-guess, .wrong-guess{
+  padding: 20px;
+  z-index: 2;
+  color: white;
+  position: fixed;
+  margin-top: 5px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.correct-guess{
+  background-color: green;
+}
+
+.wrong-guess{
+  background-color: red;
+}
