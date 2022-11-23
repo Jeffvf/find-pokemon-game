@@ -1,9 +1,11 @@
-export default function Menu({x, y, hide}){
+export default function Menu({x, y, hide, choice, elements}){
   return(
     <div id="menu" style={{top:`${y}px`, left:`${x}px`}} onClick={hide}>
-      <div onClick={(ev) => console.log(ev.target.textContent)}>Articuno</div>
-      <div>Palkia</div>
-      <div>Solgaleo</div>
+      {elements.map((el) => {
+        return(
+          <div key={el.name} onClick={(ev) => choice(ev.target.textContent)}>{el.name}</div>
+        )
+      })}
     </div>
   )
 }
