@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import StartGame from "../components/StartGame";
 import Game from "../components/Game";
+import GameOver from "../components/GameOver";
 
 export default function PlayGame() {
   const pokemonCoords = [
@@ -27,22 +28,30 @@ export default function PlayGame() {
     }
   ]
   const [gameStart, setGameStart] = useState(0);
+  const [gameOver, setGameOver] = useState(0);
   const [toFind, setToFind] = useState(pokemonCoords);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     if(toFind.length == 0){
-      console.log('hey');
+      setGameOver(1);
     }
   }, [toFind]);
 
   useEffect(() => {
-    if(gameStart && toFind.length > 0){
+    if(gameStart && !gameOver){
       setTimeout(() => {
         setCounter(counter + 1)
       }, 1000);
     }
   });
+
+  function restartGame(){
+    setGameStart(0);
+    setGameOver(0);
+    setToFind(pokemonCoords);
+    setCounter(0);
+  }
 
   function removePokemon(name){
     setToFind(toFind.filter((pokemon) => {return pokemon.name != name}));
@@ -51,6 +60,7 @@ export default function PlayGame() {
   function startGame() {
     setGameStart(1);
   }
+
   return(
     <div id="play-game">
       <div className="game-progress">
@@ -59,6 +69,7 @@ export default function PlayGame() {
       </div>
       {!gameStart && <StartGame closeModal={startGame}/>}
       <Game pokemonCoords={toFind} removeFoundItem={removePokemon}/>
+      {gameOver && <GameOver time={counter} restart={restartGame}/>}
     </div>
   )
 }
