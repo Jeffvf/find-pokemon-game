@@ -4,6 +4,7 @@ import Menu from "./Menu";
 
 export default function Game({pokemonCoords, removeFoundItem}) {
   const [coordinates, setCoordinates] = useState([0, 0]);
+  const [cursorCoordinates, setCursorCoordinates] = useState([0, 0]);
   const [menu, setMenu] = useState(0);
   const [isCorrect, setIsCorrect] = useState(0);
 
@@ -18,6 +19,7 @@ export default function Game({pokemonCoords, removeFoundItem}) {
     const coordX = (x - boundingBox.left) * (width / boundingBox.width);
     const coordY = (y - boundingBox.top) * (height / boundingBox.height);
 
+    setCursorCoordinates([ev.pageX, ev.pageY]);
     setCoordinates([coordX, coordY]);
 
     changeMenuVisibility();
@@ -51,7 +53,7 @@ export default function Game({pokemonCoords, removeFoundItem}) {
   return(
     <div id="game">
       <img src={boardImg} className="gameboard" onClick={updateCoordinates}></img>
-      {menu && <Menu x = {coordinates[0]} y = {coordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
+      {menu && <Menu x = {cursorCoordinates[0]} y = {cursorCoordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
       {isCorrect == 1 && <div className="correct-guess">You found it!</div>}
       {isCorrect == -1 && <div className="wrong-guess">It's not there</div>}
     </div>
