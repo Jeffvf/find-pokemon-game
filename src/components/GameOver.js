@@ -9,11 +9,12 @@ export default function GameOver({time, restart, app}){
 
   async function addData(e){
     if(name !== ""){
+      const data = {
+        username: name,
+        time: time
+      }
       try{
-        await addDoc(collection(db, "scoreboard"), {
-          name: {name},
-          time: {time}
-        })
+        await addDoc(collection(db, "scoreboard"), data)
       }
       catch (e) {
         console.error("Error adding document: ", e);
