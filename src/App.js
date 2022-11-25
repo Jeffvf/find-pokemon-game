@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PlayGame app={app}/>}></Route>
-        <Route path="/scoreboard" element={<Scoreboard />}></Route>
+        <Route path="/scoreboard" element={<Scoreboard app={app}/>}></Route>
       </Routes>
     </BrowserRouter>
   );
