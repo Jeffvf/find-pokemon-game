@@ -1,15 +1,16 @@
 import {getFirestore, collection, addDoc} from "firebase/firestore";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function GameOver({time, restart, app}){
   const [name, setName] = useState("");
 
   const db = getFirestore(app.app);
 
-  async function addData(){
+  async function addData(e){
     if(name !== ""){
       try{
-        const docRef = await addDoc(collection(db, "scoreboard"), {
+        await addDoc(collection(db, "scoreboard"), {
           name: {name},
           time: {time}
         })
@@ -17,6 +18,9 @@ export default function GameOver({time, restart, app}){
       catch (e) {
         console.error("Error adding document: ", e);
       }
+    }
+    else{
+      e.preventDefault();
     }
   }
 
@@ -31,7 +35,7 @@ export default function GameOver({time, restart, app}){
         </div>
         <div className="final-score-options">
           <button className="restart-btn" onClick={() => restart()}>Restart</button>
-          <button className="game-over-btn" onClick={() => addData()}>Submit</button>
+          <Link to="/scoreboard"><button className="game-over-btn" onClick={(e) => addData(e)}>Submit</button></Link>
         </div>
       </div>
     </div>
