@@ -18,7 +18,6 @@ export default function Game({pokemonCoords, removeFoundItem}) {
     const coordX = (x - boundingBox.left) * (width / boundingBox.width);
     const coordY = (y - boundingBox.top) * (height / boundingBox.height);
 
-    console.log(coordX, coordY);
     setCoordinates([coordX, coordY]);
 
     changeMenuVisibility();
