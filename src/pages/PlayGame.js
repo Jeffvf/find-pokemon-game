@@ -3,7 +3,7 @@ import StartGame from "../components/StartGame";
 import Game from "../components/Game";
 import GameOver from "../components/GameOver";
 
-export default function PlayGame() {
+export default function PlayGame(app) {
   const pokemonCoords = [
     {
       "name": "Articuno",
@@ -69,7 +69,7 @@ export default function PlayGame() {
       </div>
       {!gameStart && <StartGame closeModal={startGame}/>}
       <Game pokemonCoords={toFind} removeFoundItem={removePokemon}/>
-      {gameOver && <GameOver time={counter} restart={restartGame}/>}
+      {gameOver && <GameOver time={counter} restart={restartGame} app={app}/>}
     </div>
   )
 }
