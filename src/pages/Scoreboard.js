@@ -28,7 +28,7 @@ export default function Scoreboard({app}) {
 
   return(
     <div id="scoreboard">
-      <h1>Scoreboard</h1>
+      <h1 className="scoreboard-title">Scoreboard</h1>
       <table>
         <thead>
           <tr>
