@@ -1,5 +1,5 @@
 import { useState } from "react"
-import img from "../assets/images/gameImage.jpeg"
+import boardImg from "../assets/images/gameImage.jpeg"
 import Menu from "./Menu";
 
 export default function Game({pokemonCoords, removeFoundItem}) {
@@ -8,9 +8,18 @@ export default function Game({pokemonCoords, removeFoundItem}) {
   const [isCorrect, setIsCorrect] = useState(0);
 
   function updateCoordinates(ev) {
-    const x = ev.pageX;
-    const y = ev.pageY;
-    setCoordinates([x, y]);
+    const img = document.getElementsByClassName('gameboard')[0];
+    const height = img.height;
+    const width = img.width;
+    const boundingBox = img.getBoundingClientRect();
+    const x = ev.clientX;
+    const y = ev.clientY;
+
+    const coordX = (x - boundingBox.left) * (width / boundingBox.width);
+    const coordY = (y - boundingBox.top) * (height / boundingBox.height);
+
+    console.log(coordX, coordY);
+    setCoordinates([coordX, coordY]);
 
     changeMenuVisibility();
   }
@@ -42,7 +51,7 @@ export default function Game({pokemonCoords, removeFoundItem}) {
 
   return(
     <div id="game">
-      <img src={img} className="gameboard" onClick={updateCoordinates}></img>
+      <img src={boardImg} className="gameboard" onClick={updateCoordinates}></img>
       {menu && <Menu x = {coordinates[0]} y = {coordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
       {isCorrect == 1 && <div className="correct-guess">You found it!</div>}
       {isCorrect == -1 && <div className="wrong-guess">It's not there</div>}
