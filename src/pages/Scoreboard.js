@@ -24,7 +24,7 @@ export default function Scoreboard({app}) {
     }
     fetchData();
 
-  }, []);
+  });
 
   return(
     <div id="scoreboard">

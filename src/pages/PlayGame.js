@@ -33,7 +33,7 @@ export default function PlayGame(app) {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    if(toFind.length == 0){
+    if(toFind.length === 0){
       setGameOver(1);
     }
   }, [toFind]);
@@ -54,7 +54,7 @@ export default function PlayGame(app) {
   }
 
   function removePokemon(name){
-    setToFind(toFind.filter((pokemon) => {return pokemon.name != name}));
+    setToFind(toFind.filter((pokemon) => {return pokemon.name !== name}));
   }
 
   function startGame() {
