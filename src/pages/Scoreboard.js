@@ -28,13 +28,13 @@ export default function Scoreboard({app}) {
 
   return(
     <div id="scoreboard">
-      <h1 className="scoreboard-title">Scoreboard</h1>
+      <h1 className="scoreboard-title">Placar</h1>
       <table>
         <thead>
           <tr>
-            <th>Position</th>
-            <th>Name</th>
-            <th>Time</th>
+            <th>Posição</th>
+            <th>Nome</th>
+            <th>Tempo</th>
           </tr>
         </thead>
         <tbody>

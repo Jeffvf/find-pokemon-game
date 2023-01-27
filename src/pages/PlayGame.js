@@ -64,8 +64,8 @@ export default function PlayGame(app) {
   return(
     <div id="play-game">
       <div className="game-progress">
-        <h1 className="quantity">{toFind.length}</h1>
-        <h1>{counter}</h1>
+        <h1 className="quantity">Restam {toFind.length}</h1>
+        <h1>Tempo: {counter}s</h1>
       </div>
       {!gameStart && <StartGame closeModal={startGame}/>}
       <Game pokemonCoords={toFind} removeFoundItem={removePokemon}/>

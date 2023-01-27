@@ -28,15 +28,15 @@ export default function GameOver({time, restart, app}){
   return(
     <div id="modal">
       <div className="final-score">
-        <h1>You finished in {time} seconds!</h1>
-        <h2>Submit your score</h2>
+        <h1>Você encontrou todos em {time} segundos!</h1>
+        <h2>Registre sua pontuação</h2>
         <div>
-          <label htmlFor="name">Insert your name: </label>
+          <label htmlFor="name">Insira seu nome: </label>
           <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required></input>
         </div>
         <div className="final-score-options">
-          <button className="restart-btn" onClick={() => restart()}>Restart</button>
-          <Link to="/scoreboard"><button className="game-over-btn" onClick={(e) => addData(e)}>Submit</button></Link>
+          <button className="restart-btn" onClick={() => restart()}>Tentar novamente</button>
+          <Link to="/scoreboard"><button className="game-over-btn" onClick={(e) => addData(e)}>Registrar</button></Link>
         </div>
       </div>
     </div>
