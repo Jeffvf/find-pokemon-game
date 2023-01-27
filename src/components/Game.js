@@ -53,7 +53,7 @@ export default function Game({pokemonCoords, removeFoundItem}) {
   return(
     <div id="game">
       <img src={boardImg} className="gameboard" onClick={updateCoordinates}></img>
-      {menu && <Menu x = {cursorCoordinates[0]} y = {cursorCoordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
+      {menu == 1 && <Menu x = {cursorCoordinates[0]} y = {cursorCoordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
       {isCorrect == 1 && <div className="correct-guess">You found it!</div>}
       {isCorrect == -1 && <div className="wrong-guess">It's not there</div>}
     </div>
