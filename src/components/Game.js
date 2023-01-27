@@ -5,7 +5,7 @@ import Menu from "./Menu";
 export default function Game({pokemonCoords, removeFoundItem}) {
   const [coordinates, setCoordinates] = useState([0, 0]);
   const [cursorCoordinates, setCursorCoordinates] = useState([0, 0]);
-  const [menu, setMenu] = useState(0);
+  const [menu, setMenu] = useState(false);
   const [isCorrect, setIsCorrect] = useState(0);
 
   function updateCoordinates(ev) {
@@ -31,7 +31,7 @@ export default function Game({pokemonCoords, removeFoundItem}) {
 
   function compareCoords(pokemonName){
     const pokemon = pokemonCoords.filter((pokemon) => {
-      return pokemon.name == pokemonName;
+      return pokemon.name === pokemonName;
     })[0]
 
     const [name, x_min, x_max, y_min, y_max] = Object.values(pokemon)
@@ -52,10 +52,10 @@ export default function Game({pokemonCoords, removeFoundItem}) {
 
   return(
     <div id="game">
-      <img src={boardImg} className="gameboard" onClick={updateCoordinates}></img>
-      {menu == 1 && <Menu x = {cursorCoordinates[0]} y = {cursorCoordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
-      {isCorrect == 1 && <div className="correct-guess">You found it!</div>}
-      {isCorrect == -1 && <div className="wrong-guess">It's not there</div>}
+      <img src={boardImg} alt='game board' className="gameboard" onClick={updateCoordinates}></img>
+      {menu === true && <Menu x = {cursorCoordinates[0]} y = {cursorCoordinates[1]} hide={changeMenuVisibility} choice={compareCoords} elements={pokemonCoords}/>}
+      {isCorrect === 1 && <div className="correct-guess">You found it!</div>}
+      {isCorrect === -1 && <div className="wrong-guess">It's not there</div>}
     </div>
   )
 }

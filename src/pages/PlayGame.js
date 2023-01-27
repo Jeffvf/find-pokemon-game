@@ -69,7 +69,7 @@ export default function PlayGame(app) {
       </div>
       {!gameStart && <StartGame closeModal={startGame}/>}
       <Game pokemonCoords={toFind} removeFoundItem={removePokemon}/>
-      {gameOver==1 && <GameOver time={counter} restart={restartGame} app={app}/>}
+      {gameOver === 1 && <GameOver time={counter} restart={restartGame} app={app}/>}
     </div>
   )
 }
