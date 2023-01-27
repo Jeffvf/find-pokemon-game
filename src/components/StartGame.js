@@ -14,15 +14,15 @@ export default function StartGame({closeModal}) {
         <div className="game-info">
           <h3>Find these Pokemon:</h3>
           <div className="pokemon-to-find">
-            <img src={articunoImg} style={{height: "150px", width: "150px"}}></img>
+            <img src={articunoImg} className="pokemon-image"></img>
             <span className="pokemon-name">Articuno</span>
           </div>
           <div className="pokemon-to-find">
-            <img src={palkiaImg} style={{height: "150px", width: "150px"}}></img>
+            <img src={palkiaImg} className="pokemon-image"></img>
             <span className="pokemon-name">Palkia</span>
           </div>
           <div className="pokemon-to-find">
-            <img src={solgaleoImg} style={{height: "150px", width: "150px"}}></img>
+            <img src={solgaleoImg} className="pokemon-image"></img>
             <span className="pokemon-name">Solgaleo</span>
           </div>
           <button className="game-start-btn" onClick={closeModal}>START</button>
